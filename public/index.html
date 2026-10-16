@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZK-Tech Digital - TikTok CRM & AI Outreach</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-black text-white font-sans pb-24 min-h-screen">
+
+    <!-- Background Cover & Profile Header -->
+    <div id="cover-bg" class="h-36 bg-gradient-to-r from-emerald-900 via-zinc-900 to-black relative bg-cover bg-center">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute top-3 right-3 z-10">
+            <span id="status-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-red-950 text-red-400 border border-red-800 shadow-md">Disconnected</span>
+        </div>
+    </div>
+
+    <!-- Main Profile Card -->
+    <header class="max-w-md mx-auto px-4 -mt-12 relative z-10 space-y-3">
+        <div class="flex justify-between items-end">
+            <div class="relative">
+                <img id="profile-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&crop=faces" alt="Zain Abbas" class="w-20 h-20 rounded-full border-2 border-emerald-500 object-cover shadow-xl bg-zinc-900">
+                <label for="upload-profile-photo" class="absolute bottom-0 right-0 bg-emerald-500 text-black w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold cursor-pointer shadow-lg hover:bg-emerald-400">
+                    <i class="fa-solid fa-camera"></i>
+                </label>
+                <input type="file" id="upload-profile-photo" accept="image/*" class="hidden" onchange="changeProfilePhoto(event)">
+            </div>
+            <div class="text-right">
+                <span class="text-xs bg-emerald-950 text-emerald-400 border border-emerald-800 px-3 py-1 rounded-full font-mono font-semibold">Budget: $500 - $5000+</span>
+            </div>
+        </div>
+
+        <div>
+            <h1 class="text-lg font-extrabold text-white flex items-center gap-1.5">
+                ZK-Tech Digital <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+            </h1>
+            <p class="text-xs text-zinc-400">Owner: Zain Abbas | High-Ticket AI Agents & Web Dev</p>
+        </div>
+    </header>
+
+    <!-- Main Dashboard Content -->
+    <main class="max-w-md mx-auto p-4 space-y-4">
+
+        <!-- Metrics Grid (TikTok Style) -->
+        <div class="grid grid-cols-2 gap-3">
+            <div class="bg-zinc-900/90 border border-zinc-800 p-3.5 rounded-2xl shadow-md">
+                <p class="text-[11px] text-zinc-400 font-medium">Total Leads Contacted</p>
+                <h3 class="text-2xl font-black text-white mt-0.5">2,840</h3>
+                <p class="text-[10px] text-emerald-400 mt-1 font-semibold">🇺🇸 USA | 🇬🇧 UK | 🇦🇪 UAE</p>
+            </div>
+            <div class="bg-zinc-900/90 border border-zinc-800 p-3.5 rounded-2xl shadow-md">
+                <p class="text-[11px] text-zinc-400 font-medium">Deals & Revenue</p>
+                <h3 class="text-2xl font-black text-emerald-400 mt-0.5">$24,500</h3>
+                <p class="text-[10px] text-zinc-400 mt-1 font-medium">No-Website Leads Converted</p>
+            </div>
+        </div>
+
+        <!-- WhatsApp Linkage & Pairing Section -->
+        <div class="bg-zinc-900/70 border border-zinc-800 rounded-2xl p-4 space-y-3">
+            <div class="flex justify-between items-center">
+                <h2 class="text-xs font-bold text-zinc-300 uppercase tracking-wider">WhatsApp Pairing System</h2>
+                <span class="text-[10px] text-emerald-400 font-mono">No Link Errors</span>
+            </div>
+            <div>
+                <label class="text-[11px] text-zinc-400">Fixed Owner Number:</label>
+                <input type="text" id="phone-input" value="923268850925" class="w-full bg-black border border-zinc-700 rounded-xl p-2.5 text-sm text-emerald-400 font-mono font-bold focus:outline-none focus:border-emerald-500 mt-1" readonly>
+            </div>
+            <button onclick="getPairingCode()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold py-2.5 rounded-xl text-xs transition shadow-lg shadow-emerald-950">
+                Generate 8-Digit Pairing Code
+            </button>
+            <div id="pairing-code-display" class="text-center text-2xl font-mono text-emerald-400 font-black tracking-widest pt-1"></div>
+            <div id="qr-container" class="flex justify-center pt-1"></div>
+        </div>
+
+        <!-- Inbox: Global Leads & Chat Status -->
+        <div class="bg-zinc-900/70 border border-zinc-800 rounded-2xl p-4 space-y-3">
+            <h2 class="text-xs font-bold text-zinc-300 uppercase tracking-wider">Google Maps Global Leads Inbox</h2>
+
+            <!-- Lead 1 -->
+            <div class="flex items-center justify-between p-2.5 bg-black/60 rounded-xl border border-zinc-800">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 bg-blue-950 border border-blue-800 rounded-full flex items-center justify-center text-blue-400 font-bold text-xs">RE</div>
+                    <div>
+                        <h4 class="text-xs font-bold text-white">Miami Luxe Real Estate</h4>
+                        <p class="text-[11px] text-zinc-400">Google Maps • No Website Listed</p>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <span class="text-[10px] bg-blue-950 text-blue-300 px-2 py-0.5 rounded-full border border-blue-800">🇺🇸 USA</span>
+                    <p class="text-[10px] text-emerald-400 font-mono mt-1">$2,500 Pitch</p>
+                </div>
+            </div>
+
+            <!-- Lead 2 -->
+            <div class="flex items-center justify-between p-2.5 bg-black/60 rounded-xl border border-zinc-800">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 bg-purple-950 border border-purple-800 rounded-full flex items-center justify-center text-purple-400 font-bold text-xs">EC</div>
+                    <div>
+                        <h4 class="text-xs font-bold text-white">London Artisans Shop</h4>
+                        <p class="text-[11px] text-zinc-400">Google Maps • Needs Custom Store</p>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <span class="text-[10px] bg-purple-950 text-purple-300 px-2 py-0.5 rounded-full border border-purple-800">🇬🇧 UK</span>
+                    <p class="text-[10px] text-emerald-400 font-mono mt-1">$1,800 Pitch</p>
+                </div>
+            </div>
+
+            <!-- Lead 3 -->
+            <div class="flex items-center justify-between p-2.5 bg-black/60 rounded-xl border border-zinc-800">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 bg-amber-950 border border-amber-800 rounded-full flex items-center justify-center text-amber-400 font-bold text-xs">AI</div>
+                    <div>
+                        <h4 class="text-xs font-bold text-white">Dubai Premium Motors</h4>
+                        <p class="text-[11px] text-zinc-400">Google Maps • AI Booking Agent Needed</p>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <span class="text-[10px] bg-amber-950 text-amber-300 px-2 py-0.5 rounded-full border border-amber-800">🇦🇪 UAE</span>
+                    <p class="text-[10px] text-emerald-400 font-mono mt-1">$4,000 Pitch</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- TikTok Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-black/95 border-t border-zinc-900 py-3 px-6 flex justify-around items-center z-50 backdrop-blur">
+        <a href="#" class="text-zinc-400 hover:text-white flex flex-col items-center"><i class="fa-solid fa-house text-lg"></i><span class="text-[10px] mt-1">Home</span></a>
+        <a href="#" class="text-zinc-400 hover:text-white flex flex-col items-center"><i class="fa-solid fa-users text-lg"></i><span class="text-[10px] mt-1">Leads</span></a>
+        
+        <!-- TikTok Center Plus Button -->
+        <button onclick="openSettingsModal()" class="w-12 h-9 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center text-black font-extrabold text-lg shadow-lg shadow-emerald-500/30 hover:scale-105 transition">
+            <i class="fa-solid fa-plus"></i>
+        </button>
+
+        <a href="#" class="text-zinc-400 hover:text-white flex flex-col items-center"><i class="fa-solid fa-comment-dots text-lg"></i><span class="text-[10px] mt-1">Inbox</span></a>
+        <a href="#" class="text-zinc-400 hover:text-white flex flex-col items-center"><i class="fa-solid fa-user text-lg"></i><span class="text-[10px] mt-1">Profile</span></a>
+    </nav>
+
+    <!-- Full Custom Settings & Photo Modal -->
+    <div id="settings-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-zinc-900 border border-zinc-800 w-full max-w-sm rounded-3xl p-5 space-y-4 shadow-2xl">
+            <div class="flex justify-between items-center border-b border-zinc-800 pb-3">
+                <h3 class="font-extrabold text-white text-sm">⚙️ ZK-Tech Custom Settings</h3>
+                <button onclick="closeSettingsModal()" class="text-zinc-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            
+            <div class="space-y-3 text-xs">
+                <div>
+                    <label class="text-zinc-400 font-semibold">Change Background Cover Image:</label>
+                    <input type="file" id="upload-cover-photo" accept="image/*" class="w-full bg-black border border-zinc-700 rounded-lg p-1.5 text-zinc-300 mt-1" onchange="changeCoverPhoto(event)">
+                </div>
+
+                <div>
+                    <label class="text-zinc-400 font-semibold">Target Countries (High-Paying Only):</label>
+                    <input type="text" id="target-countries" value="USA, UK, UAE, Canada, Australia" class="w-full bg-black border border-zinc-700 rounded-lg p-2 text-white mt-1">
+                </div>
+
+                <div>
+                    <label class="text-zinc-400 font-semibold">Target Business Types (No-Website Leads):</label>
+                    <input type="text" id="target-businesses" value="Real Estate, E-commerce, SaaS, Luxury Services" class="w-full bg-black border border-zinc-700 rounded-lg p-2 text-white mt-1">
+                </div>
+
+                <div>
+                    <label class="text-zinc-400 font-semibold">Budget Filter Range:</label>
+                    <input type="text" id="budget-filter" value="$500 - $5,000+ USD" class="w-full bg-black border border-zinc-700 rounded-lg p-2 text-emerald-400 font-mono font-bold mt-1" readonly>
+                </div>
+            </div>
+
+            <button onclick="saveSettings()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold py-2.5 rounded-xl text-xs transition">
+                Save Settings & Apply
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function openSettingsModal() {
+            document.getElementById('settings-modal').classList.remove('hidden');
+        }
+        function closeSettingsModal() {
+            document.getElementById('settings-modal').classList.add('hidden');
+        }
+
+        function changeProfilePhoto(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                document.getElementById('profile-img').src = reader.result;
+            }
+            if (event.target.files[0]) reader.readAsDataURL(event.target.files[0]);
+        }
+
+        function changeCoverPhoto(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                document.getElementById('cover-bg').style.backgroundImage = `url('${reader.result}')`;
+            }
+            if (event.target.files[0]) reader.readAsDataURL(event.target.files[0]);
+        }
+
+        function saveSettings() {
+            alert('Settings & Custom Target Criteria Saved Successfully!');
+            closeSettingsModal();
+        }
+
+        async function fetchStatus() {
+            try {
+                const res = await fetch('/api/whatsapp/status');
+                const data = await res.json();
+                const badge = document.getElementById('status-badge');
+                badge.textContent = data.status;
+                badge.className = data.isConnected 
+                    ? 'px-3 py-1 rounded-full text-xs font-bold bg-emerald-950 text-emerald-400 border border-emerald-800 shadow-md'
+                    : 'px-3 py-1 rounded-full text-xs font-bold bg-red-950 text-red-400 border border-red-800 shadow-md';
+
+                if (data.qrCode) {
+                    document.getElementById('qr-container').innerHTML = `<img src="${data.qrCode}" class="w-40 h-40 bg-white p-2 rounded-2xl shadow-lg" />`;
+                }
+                if (data.pairingCode) {
+                    document.getElementById('pairing-code-display').textContent = data.pairingCode;
+                }
+            } catch (e) { console.error(e); }
+        }
+
+        async function getPairingCode() {
+            const phone = "923268850925";
+            const res = await fetch('/api/whatsapp/pairing-code', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ phoneNumber: phone })
+            });
+            const data = await res.json();
+            if(data.success) alert('Pairing code requested successfully for ' + phone);
+            else alert('Error: ' + data.error);
+        }
+
+        setInterval(fetchStatus, 3000);
+        fetchStatus();
+    </script>
+</body>
+                  </html>
+                  
